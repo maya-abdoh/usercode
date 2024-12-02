@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "mongodb": "^6.1.0"
+  },
+  "scripts": {
+    "start": "node script.js"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
