@@ -11,7 +11,6 @@ import {
 } from "recharts";
 
 const Graph = ({ graphData }) => {
-  // Transform the data into the required format for the graph
   const data = Object.keys(graphData).map((index) => {
     const month = graphData[index].month;
     const salesInvoiceTotal = graphData[index].salesInvoiceTotal;
