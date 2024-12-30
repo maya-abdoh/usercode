@@ -15,7 +15,6 @@ import Ledger from './components/Ledger';
 
 function App() {
   return (
-    // Add basename to BrowserRouter
     <BrowserRouter basename="/usercode">
       <Routes>
         <Route path="/" element={<Home />} />
