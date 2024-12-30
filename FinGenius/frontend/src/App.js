@@ -1,4 +1,3 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/Home.jsx';
 import Partners from './components/Partners';
@@ -16,7 +15,8 @@ import Ledger from './components/Ledger';
 
 function App() {
   return (
-    <BrowserRouter basename="/usercode"> {/* GitHub Pages basename */}
+    // Add basename to BrowserRouter
+    <BrowserRouter basename="/usercode">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customers" element={<Partners partnerType={"customer"} />} />

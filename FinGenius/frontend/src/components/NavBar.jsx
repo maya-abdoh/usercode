@@ -1,20 +1,15 @@
 import React from "react";
 
 const NavBar = () => {
-  const handleNavLinkClick = () => {
-    // Force a full page reload when a navigation link is clicked
-    window.location.reload();
-  };
-
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light bg-light border-bottom border-body  border-2 shadow-sm bg-gradient"
+      className="navbar navbar-expand-lg navbar-light bg-light border-bottom border-body border-2 shadow-sm bg-gradient"
       style={{ backgroundColor: "#D3D3D3" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <a className="navbar-brand" href={`${process.env.PUBLIC_URL}/`}>
           <img
-            src="/logos/logo-navbar.png"
+            src={`${process.env.PUBLIC_URL}/logos/logo-navbar.png`}
             style={{
               height: "40px",
             }}
@@ -36,65 +31,49 @@ const NavBar = () => {
           <div className="navbar-nav">
             <a
               className="nav-link"
-              href="/customers"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/customers`}
             >
               Customers
             </a>
             <a
               className="nav-link"
-              href="/vendors"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/vendors`}
             >
               Vendors
             </a>
             <a
               className="nav-link"
-              href="/products"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/products`}
             >
               Products
             </a>
             <a
               className="nav-link"
-              href="/payments"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/payments`}
             >
               Payments
             </a>
             <a
               className="nav-link"
-              href="/receipts"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/receipts`}
             >
               Receipts
             </a>
             <a
               className="nav-link"
-              href="/salesinvoices"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/salesinvoices`}
             >
               Sales Invoices
             </a>
             <a
               className="nav-link"
-              href="/purchaseinvoices"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/purchaseinvoices`}
             >
               Purchase Invoices
             </a>
             <a
               className="nav-link"
-              href="/ledger"
-              activeClassName="active"
-              onClick={handleNavLinkClick}
+              href={`${process.env.PUBLIC_URL}/ledger`}
             >
               Ledger
             </a>
