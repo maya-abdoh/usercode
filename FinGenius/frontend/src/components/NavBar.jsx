@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -7,7 +8,7 @@ const NavBar = () => {
       style={{ backgroundColor: "#D3D3D3" }}
     >
       <div className="container-fluid">
-        <a className="navbar-brand" href={`${process.env.PUBLIC_URL}/`}>
+        <Link className="navbar-brand" to="/">
           <img
             src={`${process.env.PUBLIC_URL}/logos/logo-navbar.png`}
             style={{
@@ -15,7 +16,7 @@ const NavBar = () => {
             }}
             alt="FinGenius"
           />
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -29,54 +30,30 @@ const NavBar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/customers`}
-            >
+            <Link className="nav-link" to="/customers">
               Customers
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/vendors`}
-            >
+            </Link>
+            <Link className="nav-link" to="/vendors">
               Vendors
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/products`}
-            >
+            </Link>
+            <Link className="nav-link" to="/products">
               Products
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/payments`}
-            >
+            </Link>
+            <Link className="nav-link" to="/payments">
               Payments
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/receipts`}
-            >
+            </Link>
+            <Link className="nav-link" to="/receipts">
               Receipts
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/salesinvoices`}
-            >
+            </Link>
+            <Link className="nav-link" to="/salesinvoices">
               Sales Invoices
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/purchaseinvoices`}
-            >
+            </Link>
+            <Link className="nav-link" to="/purchaseinvoices">
               Purchase Invoices
-            </a>
-            <a
-              className="nav-link"
-              href={`${process.env.PUBLIC_URL}/ledger`}
-            >
+            </Link>
+            <Link className="nav-link" to="/ledger">
               Ledger
-            </a>
+            </Link>
           </div>
         </div>
       </div>

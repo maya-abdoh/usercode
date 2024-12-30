@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Home from './components/Home.jsx';
 import Partners from './components/Partners';
 import AddPartner from './components/AddPartner';
@@ -15,8 +15,7 @@ import Ledger from './components/Ledger';
 
 function App() {
   return (
-    // Add basename to BrowserRouter
-    <BrowserRouter basename="/usercode">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customers" element={<Partners partnerType={"customer"} />} />
@@ -40,7 +39,7 @@ function App() {
         <Route path="/receipts/add" element={<AddTransaction transactionType={"receipt"} />} />
         <Route path="/ledger" element={<Ledger />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
