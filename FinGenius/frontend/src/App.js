@@ -16,7 +16,7 @@ import Ledger from './components/Ledger';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/usercode"> 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customers" element={<Partners partnerType={"customer"} />} />
@@ -28,16 +28,16 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/add" element={<AddProduct />} />
         <Route path="/products/edit" element={<EditProduct />} />
-        <Route path="/salesinvoices" element={<Invoices invoiceType={"sales"}/>} />
+        <Route path="/salesinvoices" element={<Invoices invoiceType={"sales"} />} />
         <Route path="/salesinvoices/add" element={<AddInvoice invoiceType={"sales"} />} />
         <Route path="/salesinvoices/view" element={<InvoiceReport invoiceType={"sales"} />} />
-        <Route path="/purchaseinvoices" element={<Invoices invoiceType={"purchase"}/>} />
+        <Route path="/purchaseinvoices" element={<Invoices invoiceType={"purchase"} />} />
         <Route path="/purchaseinvoices/add" element={<AddInvoice invoiceType={"purchase"} />} />
         <Route path="/purchaseinvoices/view" element={<InvoiceReport invoiceType={"purchase"} />} />
-        <Route path="/payments" element={<Transactions transactionType={"payment"}/>} />
-        <Route path="/payments/add" element={<AddTransaction transactionType={"payment"}/>} />
-        <Route path="/receipts" element={<Transactions transactionType={"receipt"}/>} />
-        <Route path="/receipts/add" element={<AddTransaction transactionType={"receipt"}/>} />
+        <Route path="/payments" element={<Transactions transactionType={"payment"} />} />
+        <Route path="/payments/add" element={<AddTransaction transactionType={"payment"} />} />
+        <Route path="/receipts" element={<Transactions transactionType={"receipt"} />} />
+        <Route path="/receipts/add" element={<AddTransaction transactionType={"receipt"} />} />
         <Route path="/ledger" element={<Ledger />} />
       </Routes>
     </BrowserRouter>
