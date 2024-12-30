@@ -15,8 +15,8 @@ import Ledger from './components/Ledger';
 
 function App() {
   return (
-    <BrowserRouter basename="/usercode">
-      <Routes>
+<BrowserRouter>
+<Routes>
         <Route path="/" element={<Home />} />
         <Route path="/customers" element={<Partners partnerType={"customer"} />} />
         <Route path="/customers/add" element={<AddPartner partnerType={"customer"} />} />
