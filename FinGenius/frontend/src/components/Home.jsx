@@ -6,18 +6,16 @@ import Spinner from "./Spinner";
 import Alert from "./Alert";
 
 const Home = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [alertType, setAlertType] = useState(null);
-  const [alertMessage, setAlertMessage] = useState("");
-  const [groupedInvoices, setGroupedInvoices] = useState([]);
-
-  const API_URL = "https://usercode-kpwe.onrender.com"; // رابط الواجهة الخلفية
+  const [isLoading, setIsLoading] = useState(false); 
+  const [alertType, setAlertType] = useState(null); 
+  const [alertMessage, setAlertMessage] = useState(""); 
+  const [groupedInvoices, setGroupedInvoices] = useState([]); 
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoading(true); 
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get(`${API_URL}/invoices`);
+        const response = await axios.get(`/invoices`);
 
         if (response.status === 200) {
           if (response.data.length === 0) {
@@ -25,9 +23,10 @@ const Home = () => {
             setAlertMessage(`No Sales/Purchase data found.`);
           } else {
             const currentDate = new Date();
-            const groupedInvoices = {};
-            const lastSixMonths = [];
 
+            const groupedInvoices = {};
+
+            const lastSixMonths = [];
             for (let i = 0; i < 6; i++) {
               lastSixMonths.push(
                 `${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`
@@ -38,7 +37,9 @@ const Home = () => {
             response.data.forEach((invoice) => {
               const { type, invoiceTotal } = invoice.invoice;
               const invoiceDate = new Date(invoice.invoice.invoiceDate);
-              const monthYear = `${invoiceDate.getMonth() + 1}/${invoiceDate.getFullYear()}`;
+              const monthYear = `${
+                invoiceDate.getMonth() + 1
+              }/${invoiceDate.getFullYear()}`;
 
               if (!groupedInvoices[monthYear]) {
                 groupedInvoices[monthYear] = {
@@ -48,9 +49,11 @@ const Home = () => {
               }
 
               if (type === "sales") {
-                groupedInvoices[monthYear].salesInvoiceTotal += parseFloat(invoiceTotal);
+                groupedInvoices[monthYear].salesInvoiceTotal +=
+                  parseFloat(invoiceTotal);
               } else if (type === "purchase") {
-                groupedInvoices[monthYear].purchaseInvoiceTotal += parseFloat(invoiceTotal);
+                groupedInvoices[monthYear].purchaseInvoiceTotal +=
+                  parseFloat(invoiceTotal);
               }
             });
 
@@ -88,7 +91,7 @@ const Home = () => {
     };
 
     fetchInvoices();
-  }, [API_URL]);
+  }, []);
 
   return (
     <div>

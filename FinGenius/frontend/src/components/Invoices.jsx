@@ -6,17 +6,16 @@ import Spinner from "./Spinner";
 
 const Invoices = ({ invoiceType }) => {
   const navigate = useNavigate();
+
   const [isLoading, setIsLoading] = useState(true);
   const [invoices, setInvoices] = useState([]);
   const [alertType, setAlertType] = useState(null);
   const [alertMessage, setAlertMessage] = useState("");
 
-  const API_URL = "https://usercode-kpwe.onrender.com"; // رابط الواجهة الخلفية
-
   useEffect(() => {
     const fetchInvoices = async () => {
       try {
-        const response = await axios.get(`${API_URL}/invoices?type=${invoiceType}`);
+        const response = await axios.get(`/invoices?type=${invoiceType}`);
 
         if (response.status === 200) {
           if (response.data.length === 0) {
@@ -35,13 +34,15 @@ const Invoices = ({ invoiceType }) => {
         setIsLoading(false);
       } catch (error) {
         setAlertType("danger");
-        setAlertMessage(`Failed to retrieve ${invoiceType} invoices: ${error.message}`);
+        setAlertMessage(
+          `Failed to retrieve ${invoiceType} invoices: ${error.message}`
+        );
         setIsLoading(false);
       }
     };
 
     fetchInvoices();
-  }, [invoiceType, API_URL]);
+  }, [invoiceType]);
 
   const handleViewInvoice = (invoice) => {
     const viewInvoiceUrl = `/${invoiceType}invoices/view?id=${invoice._id}`;
@@ -78,31 +79,42 @@ const Invoices = ({ invoiceType }) => {
                 <table className="table table-bordered table-hover align-middle">
                   <thead style={{ backgroundColor: "#f2f7fc", color: "#000" }}>
                     <tr>
-                      <th>Invoice Date</th>
-                      <th>Invoice No.</th>
-                      <th>Due Date</th>
-                      <th>
+                      <th style={{ whiteSpace: "nowrap" }}>Invoice Date</th>
+                      <th style={{ whiteSpace: "nowrap" }}>Invoice No.</th>
+                      <th style={{ whiteSpace: "nowrap" }}>Due Date</th>
+                      <th style={{ whiteSpace: "nowrap" }}>
                         {invoiceType === "sales" ? "Customer" : "Vendor"} Name
                       </th>
-                      <th>Total Items</th>
-                      <th>Invoice Total</th>
-                      <th>Actions</th>
+                      <th style={{ whiteSpace: "nowrap" }}>Total Items</th>
+                      <th style={{ whiteSpace: "nowrap" }}>Invoice Total</th>
+                      <th style={{ whiteSpace: "nowrap" }}>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {invoices.map((invoice) => (
                       <tr key={invoice._id}>
-                        <td>{invoice.invoice.invoiceDate}</td>
-                        <td>{invoice.invoice.invoiceNo}</td>
-                        <td>{invoice.invoice.dueDate}</td>
-                        <td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {invoice.invoice.invoiceDate}
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {invoice.invoice.invoiceNo}
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {invoice.invoice.dueDate}
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
                           {invoice.partner
                             ? `${invoice.partner.firstName} ${invoice.partner.lastName}`
                             : "Unknown Partner"}
                         </td>
-                        <td>{invoice.invoice.invoiceItems.length}</td>
-                        <td>
-                          ${parseFloat(invoice.invoice.invoiceTotal).toLocaleString()}
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          {invoice.invoice.invoiceItems.length}
+                        </td>
+                        <td style={{ whiteSpace: "nowrap" }}>
+                          $
+                          {parseFloat(
+                            invoice.invoice.invoiceTotal
+                          ).toLocaleString()}
                         </td>
                         <td className="text-center">
                           <button
